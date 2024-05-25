@@ -1,20 +1,29 @@
-# 使用 Python 官方提供的镜像
-FROM python:3.8
+# 使用官方Python基础镜像
+FROM python:3.11-slim
 
-# 设置工作目录
+# 设置环境变量
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# 创建并设置工作目录
 WORKDIR /app
 
-# 将 Pipfile 和 Pipfile.lock 复制到容器中
-COPY Pipfile Pipfile.lock ./
+# 安装系统依赖和 pipenv
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends gcc libc-dev \
+    && pip install pipenv
 
-# 安装 Pipenv
-RUN pip install pipenv
+# 复制Pipfile和Pipfile.lock文件
+COPY Pipfile Pipfile.lock /app/
 
-# 使用 Pipenv 安装依赖
+# 安装Python依赖
 RUN pipenv install --system --deploy
 
-# 将项目文件复制到容器中（假设你的项目文件在当前目录中）
-COPY . .
+# 复制项目文件
+COPY . /app/
 
-# 执行你的应用程序，比如启动 Django 服务器
+# 暴露Django默认端口
+EXPOSE 8000
+
+# 启动Django应用
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
