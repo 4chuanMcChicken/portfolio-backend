@@ -114,7 +114,17 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+# 确保你已经设置了 CORS 相关的配置
 CORS_ALLOW_ALL_ORIGINS = True
+
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'yizhou.me',  # 添加你的域名
+    'joeyli.static.observableusercontent.com',  # 添加这个主机名
+]
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
