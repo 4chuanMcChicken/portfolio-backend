@@ -126,8 +126,7 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r'^http://localhost:\d+$',
     r'^http://127.0.0.1:\d+$',
-    'joeyli.static.observableusercontent.com',  # 添加这个主机名
-    r'^http://joeyli.static.observableusercontent.com$',  # 添加这个主机名的正则表达式
+    r'^https://joeyli.static.observableusercontent.com$',  # 添加这个主机名的正则表达式
 ]
 
 
