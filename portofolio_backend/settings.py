@@ -25,7 +25,12 @@ SECRET_KEY = "django-insecure--qu(9omc)85h-!_)h1inz3wnoy5o8(1dh5_)v-otpg8*asyx77
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'yizhou.me',  # 添加你的域名
+    'joeyli.static.observableusercontent.com',  # 添加这个主机名
+]
 
 
 # Application definition
@@ -38,7 +43,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "corsheaders",
-    "d3js"
+    "d3js",
+    "playGround"
 ]
 
 MIDDLEWARE = [
@@ -116,14 +122,13 @@ USE_TZ = True
 
 
 # 确保你已经设置了 CORS 相关的配置
-CORS_ALLOW_ALL_ORIGINS = True
-
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    'yizhou.me',  # 添加你的域名
-    'joeyli.static.observableusercontent.com',  # 添加这个主机名
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r'^http://localhost:\d+$',
+    r'^http://127.0.0.1:\d+$',
 ]
+
+
 
 
 # Static files (CSS, JavaScript, Images)

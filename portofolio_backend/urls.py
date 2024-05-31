@@ -19,5 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/d3js/",include("d3js.urls"))
+    path("api/d3js/",include("d3js.urls")),
+    path("api/playGround/",include("playGround.urls"))
 ]
